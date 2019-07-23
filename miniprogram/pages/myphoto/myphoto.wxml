@@ -1,0 +1,7 @@
+<!--pages/myphoto/myphoto.wxml-->
+<text>pages/myphoto/myphoto.wxml</text>
+<button bindtap='upLoadImg'>上传文件</button>
+<button catchtap='showImage'>显示图片</button>
+<view wx:for="{{list}}" wx:key="index">
+  <image src="{{item.fileID}}"></image>
+</view>

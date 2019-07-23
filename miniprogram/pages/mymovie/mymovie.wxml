@@ -1,0 +1,14 @@
+<!--pages/mymovie/mymovie.wxml-->
+<view class='mymovie'>
+  <!-- 输入框输入你喜欢的电影文字 -->
+  <van-field
+    value="{{ value }}"
+    placeholder="请输入你喜欢的电影"
+    border="{{ false }}"
+    bind:change="onChange"
+  />
+  <!-- 按钮  上传图片--1张 -->
+  <van-button type="warning" size='large' bindtap='upLoadImg'>上传一张图片</van-button>
+  <!-- 提交按钮 -->
+  <van-button type="default" size='large' bindtap='submit'>提交</van-button>
+</view>

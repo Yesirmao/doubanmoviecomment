@@ -1,0 +1,61 @@
+<!--pages/comment/comment.wxml-->
+<view>
+  <!-- 1电影图片 -->
+  <!-- style='background:url('') no-repeat top' -->
+  <view class='detail-container' style="background:url({{list.images.large}}) no-repeat top"></view>
+  <!-- 2遮罩层 -->
+  <view class='detail-mask'></view>
+  <!-- 3电影介绍 -->
+  <view class='detail-info'>
+    <!-- 电影图片 -->
+    <image class='detail-img' src='{{list.images.medium}}'></image>
+    <view class='detail'>
+      <!-- 电影标题 -->
+      <view>电影：<text>{{list.original_title}}</text></view>
+      <!-- 电影评分 -->
+      <view>评分：<text class='detail-sc'>{{list.rating.average}}</text></view>
+      <!-- 电影导演 -->
+      <view>导演：<text wx:for="{{list.directors}}" wx:key="index">{{item.name + " "}}</text></view>
+      <!-- 电影类型 -->
+      <view>类型：<text>{{list.genres}}</text></view>
+      <!-- 电影国家 -->
+      <view>国家：<text wx:for="{{list.countries}}" wx:key="index">{{item+" "}}</text></view>
+      <!-- 上映时间 -->
+      <view>时间：<text>{{list.year}}</text></view>
+    </view>
+  </view>
+  <!-- 4电影描述 -->
+  <view class='desc'>电影描述: <text>{{list.summary}}</text></view>
+  <!-- 8发表评论 -->
+  <view>
+    <van-field
+    value="{{ value }}"
+    placeholder="请发表你的评论"
+    border="{{ true }}"
+    bind:change="onContentChange"
+  />
+  </view>
+  <!-- 评论预览区 -->
+  <view>
+    <view class='comm' wx:for="{{showContent}}" wx:key="index">
+      <text class='desc'>{{"第"+ (index+1) + "条评论：" + item.content}}</text>
+    </view>
+  </view>
+  <!-- 5电影打分 -->
+  <view>
+    <van-rate value="{{ score }}" bind:change="onScoreChange" />
+  </view>
+  <!-- 6图片上传按钮 -->
+  <view>
+    <van-button type="warning" size='large' bindtap='uploadImg'>图片上传</van-button>
+  </view>
+  <!-- 7图片预览区 -->
+  <view>
+    <image wx:for="{{upLoadImage}}" wx:key="index" src="{{item}}"
+    class='comment-img'></image>
+  </view>
+  <view>
+    <van-button plain type="primary" size='large' bindtap='sumbit'>提交评论</van-button>
+  </view>
+</view>
+  

@@ -1,0 +1,29 @@
+<!--pages/movieIndex/movieIndex.wxml-->
+<view class='movie' wx:for="{{movieList}}" wx:key="movieIndex">
+  <!-- 左侧:电影海报图片 -->
+  <image class='movieImg' src="{{item.images.small}}"></image>
+  <!-- 右侧:电影介绍 -->
+  <view class='movieInfo'>
+    <!-- 右侧：电影标题 -->
+    <view class='movieTitle'>
+      电影名称：<text>{{item.title}}</text>
+    </view>
+    <!-- 右侧：电影评分 -->
+    <view>
+      观众评分：<text class='movieScore'>{{item.rating.average}}</text>
+    </view>
+    <!-- 右侧：电影主演 -->
+    <view>
+      主演：<text wx:for="{{item.casts}}" wx:key="index">{{item.name+" "}}</text>
+    </view>
+    <view>
+      导演：<text wx:for="{{item.directors}}" wx:key="index">{{item.name+" "}}</text>
+    </view>
+    <!-- 右侧：电影年份 -->
+    <view>
+      年份：<text>{{item.year}}</text>
+    </view>
+    <!-- 右侧：详情按钮 -->
+    <button class='movieComment' bindtap='jumpDetail' data-id="{{item.id}}">详情</button>
+  </view>
+</view>

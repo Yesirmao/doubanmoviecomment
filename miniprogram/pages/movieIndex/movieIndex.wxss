@@ -1,0 +1,36 @@
+/* 电影父元素框的大小 */
+.movie {
+  display: flex;
+  padding: 10rpx;
+  border-bottom: 1px solid #ccc;
+}
+/* 图片海报的大小 */
+.movieImg{
+  width: 300rpx;
+  height: 300rpx;
+  margin-right: 20rpx;
+}
+/* 右侧信息框大小 */
+.movieInfo {
+  flex: 1;  /*将右侧区域充满*/
+  font-size: 22rpx;
+  line-height: 1.8;
+}
+/* 电影标题 */
+.movieTitle {
+  font-size: 30rpx;
+  color: #666;
+  box-sizing:content-box;
+}
+/* 电影评分 */
+.movieScore {
+  color: #faaf00;
+}
+/* 详情按钮 */
+.movieComment {
+  height: 60rpx;
+  background: #e54847;
+  font-size: 26rpx;
+  color: #fff;
+  margin-top: 20rpx;
+}
