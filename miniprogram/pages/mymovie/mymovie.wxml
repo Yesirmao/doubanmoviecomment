@@ -9,6 +9,10 @@
   />
   <!-- 按钮  上传图片--1张 -->
   <van-button type="warning" size='large' bindtap='upLoadImg'>上传一张图片</van-button>
+  <!-- 图片的预览区 -->
+  <view>
+    <image wx:for="{{file}}" wx:key="index" src='{{item}}' class='img'></image>
+  </view>
   <!-- 提交按钮 -->
   <van-button type="default" size='large' bindtap='submit'>提交</van-button>
 </view>

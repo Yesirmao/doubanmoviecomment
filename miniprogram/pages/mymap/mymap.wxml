@@ -15,6 +15,5 @@ scale='14'
 show-location='{{myshow}}'
 style='width:100%;height:600rpx'
 controls='{{controls}}'
-
 >
 </map>

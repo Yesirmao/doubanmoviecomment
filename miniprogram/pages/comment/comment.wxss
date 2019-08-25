@@ -34,7 +34,7 @@
 /* 右侧区域 */
 .detail {
   flex-grow: 1; /*文字占满剩余的空间*/
-  line-height: 60rpx;
+  line-height: 54rpx;
   color: #fff;  /*文字的颜色*/
   font-size: 24rpx; /*字体大小*/
 }

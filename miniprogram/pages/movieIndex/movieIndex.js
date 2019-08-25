@@ -26,7 +26,6 @@ Page({
       }
     }).then(res=> {           //调用云函数成功，返回的数据
       var row = JSON.parse(res.result).subjects;
-      console.log(row);
       row = this.data.movieList.concat(row);
         this.setData({
           movieList: row

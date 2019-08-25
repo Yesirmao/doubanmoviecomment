@@ -1,1 +1,6 @@
 /* pages/mymovie/mymovie.wxss */
+.img {
+  width: 200rpx;
+  height: 200rpx;
+  padding: 20rpx;
+}

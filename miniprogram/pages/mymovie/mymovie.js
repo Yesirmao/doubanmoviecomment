@@ -1,15 +1,56 @@
 // pages/mymovie/mymovie.js
+const db = wx.cloud.database();
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-      value: ""
+      value: "",
+      file: []
   },
   //提交功能
   submit() {
-
+    // 1.获取上传图片
+    var fileImg = this.data.file[0];
+    // 2.截取文件后缀名称
+    var suffix = /\.\w+$/.exec(fileImg)[0];
+    // 3.创建新文件名称
+    var newFile = new Date().getTime() + suffix;
+    // 4.获取用户评论内容
+    var content = this.data.value;
+    // 5.上传文件操作
+    wx.cloud.uploadFile({
+      cloudPath: newFile,
+      filePath: fileImg,
+      success: res => {
+        console.log(res);
+        var fileId = res.fileID;
+        db.collection("mymovie").add({
+          data: {
+            content: content,
+            fileID: fileId
+          }
+        }).then(res=> {
+          this.setData({
+            value: "",
+            file: []
+          }) 
+          wx.showToast({
+            title: '提交成功...'
+          })
+        }).catch(err=> {
+          console.log(err);
+          wx.showToast({
+            title: '提交失败...'
+          })
+        })
+      },
+      fail: err => {
+        console.log(err);
+      }
+    })
+    //  5.1如果上传成功，获取fileID
   },
   //图片上传功能
   upLoadImg() {
@@ -17,8 +58,12 @@ Page({
       count:1,
       sizeType:["original","compressed"],
       sourceType: ["album", "camera"],
-      success: function(res) {
+      success: res=> {
         console.log(res);
+        var file = res.tempFilePaths;
+        this.setData({
+          file: file
+        })
       },
       fail: err =>{
         console.log(err);

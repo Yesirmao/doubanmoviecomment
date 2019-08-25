@@ -33,10 +33,10 @@ Page({
         var pic = this.data.upLoadImage[i];
         //  3.3.2创建正则表达式拆分文件后缀名 .jpg  .gif  .png
         // var reg = /(\.jpg|\.gif|\.png)$/;
-        var suffix = /\.\w+$/.exec(pic)[0];
+        var suffix = /\.\w+$/.exec(pic)[0]; //获取图片的后缀名
         // 3.3.3上传图片并且将fileID保存到数组中
         wx.cloud.uploadFile({
-          //// 3.3.4为图片创建新文件名
+          // 3.3.4为图片创建新文件名
           cloudPath: new Date().getTime() + Math.floor(Math.random()*9999) + suffix,
           filePath: pic,    //需要上传图片的文件名
           success: res => { //上传成功
@@ -82,7 +82,7 @@ Page({
       wx.hideLoading();
     // 9.显示提示框"发表成功"
       wx.showToast({
-        title: '发表成功',
+        title: '发表成功'
       })
       // 发表成功，将评论显示出来
       db.collection("doubancomment").get().then(res=> {
@@ -151,8 +151,7 @@ Page({
       })
       wx.hideLoading();      //隐藏加载栏
     }).catch(err => {
-      console.log(err);
-    })
+     })
   },
   // 评论查询功能
   search() {
